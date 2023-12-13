@@ -55,7 +55,7 @@ export function NoteIndex() {
 
     if (!notes) return <div>Loading...</div>
     return (
-        <section className="note-index main-layout full">
+        <section className="note-index">
             {/* <NoteFilter filterBy={{ txt, minSpeed }} onSetFilter={onSetFilter} /> */}
             <AddNote />
             <NoteList notes={notes} onRemoveNote={onRemoveNote} />
