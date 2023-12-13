@@ -1,1 +1,12 @@
- /* mail list */
+/* mail list */
+
+.mail-list {
+  list-style: none;
+  background-color: #fff;
+  color: #202124;
+  /* opacity: 80%; */
+}
+
+.mail-list li {
+  border-top: 1px solid black;
+}
