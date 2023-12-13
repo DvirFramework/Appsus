@@ -1,1 +1,8 @@
- /* note list */
+.note-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .note-list li {
+    margin-bottom: 20px;
+  }

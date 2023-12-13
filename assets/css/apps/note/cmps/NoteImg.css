@@ -1,0 +1,10 @@
+.note-img {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .note-img img {
+    max-width: 100%;
+    height: auto;
+  }
