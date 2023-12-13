@@ -58,9 +58,7 @@ function getFilterFromQueryString(searchParams) {
     return { txt }
 }
 
-// function getEmptyNote(type = '', maxSpeed = '') {
-//     return { type, maxSpeed }
-// }
+
 
 // function getDefaultFilter() {
 //     return { txt: '', minSpeed: '', maxPrice: '' }
@@ -77,23 +75,6 @@ function getFilterFromQueryString(searchParams) {
 //     }
 // }
 
-// function _createNotes() {
-//     let notes = utilService.loadFromStorage(NOTE_KEY)
-//     if (!notes || !notes.length) {
-//         notes = []
-//         notes.push(_createNote('audu', 300))
-//         notes.push(_createNote('fiak', 120))
-//         notes.push(_createNote('subali', 50))
-//         notes.push(_createNote('mitsu', 150))
-//         utilService.saveToStorage(NOTE_KEY, notes)
-//     }
-// }
-
-// function _createNote(vendor, maxSpeed = 250) {
-//     const note = getEmptyCar(vendor, maxSpeed)
-//     note.id = utilService.makeId()
-//     return note
-// }
 
 function _createNote(type, data, backgroundColor = '#00d') {
     return {

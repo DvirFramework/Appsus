@@ -15,10 +15,5 @@ export function NotePreview({ note }) {
         case 'NoteTodos':
             return <NoteTodos note={note} />
     }
-    // return (
-    //     <article className="note-preview">
-    //         <h2> Note: {note.type}</h2>
-    //         <h2> Note: {note.id}</h2>
-    //     </article>
-    // )
+    
 }
