@@ -31,7 +31,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.note-item button {
+button {
   margin-left: auto;
   background-color: #a3ade7df;
   color: #fff;

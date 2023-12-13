@@ -33,7 +33,7 @@
     cursor: pointer;
   }
   
-  button:hover {
+  .add-note button:hover {
     background-color: #79caed;
   }
   
