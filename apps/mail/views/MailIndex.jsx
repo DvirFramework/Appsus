@@ -53,7 +53,7 @@ export function MailIndex() {
 
   if (!mails) return <div>Loading...</div>
   return (
-    <section className="mail-index main-layout ">
+    <section className="mail-index main-mail-layout ">
       <MailAdd />
       <MailFilter />
       <MailFolder />

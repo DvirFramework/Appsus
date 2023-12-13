@@ -83,6 +83,7 @@ function _createMails() {
     mails.push(_createMail("football", "messi and ronaldo playing together"))
     mails.push(_createMail("basketball", "lebron james playing in miami", true))
     mails.push(_createMail("cars", "ferrari and lamboo racing"))
+    mails.push(_createMail("Don POLO", "fuck u ma nigga"))
     storageService.saveToStorage(MAIL_KEY, mails)
   }
 }
@@ -91,4 +92,8 @@ function _createMail(subject, body = "") {
   const mail = getEmptyMail(subject, body)
   mail.id = utilService.makeId()
   return mail
+}
+
+function hello() {
+  console.log("hellp")
 }
