@@ -1,0 +1,8 @@
+.mail-folder {
+  grid-row: 2;
+}
+
+.mail-folder .mail-folderBy {
+  display: flex;
+  flex-direction: column;
+}

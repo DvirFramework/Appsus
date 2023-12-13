@@ -3,9 +3,7 @@ export function MailPreview({ mail }) {
   return (
     <article className="mail-preview mail-preview-layout">
       <div className="signal-mail flex align-center">
-        <button>+</button>
         <button>⭐</button>
-        <button>-</button>
       </div>
 
       <div className="from-mail flex align-center">

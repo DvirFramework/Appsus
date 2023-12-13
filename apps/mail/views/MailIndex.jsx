@@ -1,3 +1,6 @@
+import { MailAdd } from "../cmps/MailAdd.jsx"
+import { MailFilter } from "../cmps/MailFilter.jsx"
+import { MailFolder } from "../cmps/MailFolder.jsx"
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService } from "../services/mail.service.js"
 const { useState, useEffect } = React
@@ -50,8 +53,10 @@ export function MailIndex() {
 
   if (!mails) return <div>Loading...</div>
   return (
-    <section className="mail-index main-layout full">
-      {/* <CarFilter filterBy={{ txt, minSpeed }} onSetFilter={onSetFilter} /> */}
+    <section className="mail-index main-layout ">
+      <MailAdd />
+      <MailFilter />
+      <MailFolder />
       <MailList mails={mails} onRemoveCar={onRemoveMail} />
     </section>
   )

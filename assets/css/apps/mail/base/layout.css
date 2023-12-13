@@ -1,6 +1,9 @@
-.mail-list-main-layout {
-  /* display: grid; */
-  /* grid-template-columns: 100px 1fr 100px; */
+.main-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr 50px;
+  grid-template-rows: 80px 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
 
 .mail-preview-layout {

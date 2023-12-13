@@ -6,3 +6,8 @@
 .mail-preview .mail-body .mail-subject {
   margin-inline-end: 10px;
 }
+
+.mail-preview .date-mail {
+  justify-self: end;
+  padding-right: 10px;
+}

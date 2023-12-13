@@ -49,7 +49,7 @@ function save(mail) {
   }
 }
 
-function getEmptyMail(subject = "", body = "") {
+function getEmptyMail(subject = "", body = "", isRead) {
   return {
     subject,
     body,
@@ -81,7 +81,7 @@ function _createMails() {
   if (!mails || !mails.length) {
     mails = []
     mails.push(_createMail("football", "messi and ronaldo playing together"))
-    mails.push(_createMail("basketball", "lebron james playing in miami"))
+    mails.push(_createMail("basketball", "lebron james playing in miami", true))
     mails.push(_createMail("cars", "ferrari and lamboo racing"))
     storageService.saveToStorage(MAIL_KEY, mails)
   }
