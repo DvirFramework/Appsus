@@ -6,6 +6,7 @@ const { useState, useEffect } = React
 export function MailAdd() {
   const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyMail())
   let [isModalShow, setModalShow] = useState(false)
+  const [showBackdrop, setShowBackdrop] = useState(false)
   const dynClass = isModalShow ? "" : "hidden"
   const navigate = useNavigate()
 
@@ -35,10 +36,13 @@ export function MailAdd() {
 
   function onCompose() {
     setModalShow((isModalShow = !isModalShow))
+    setShowBackdrop(true)
   }
 
   function closeCompose() {
     setModalShow((isModalShow = !isModalShow))
+    setShowBackdrop(true)
+    setShowBackdrop(false)
   }
 
   function onSendMail(ev) {
@@ -46,7 +50,11 @@ export function MailAdd() {
     mailService.getEmptyMail()
     mailService
       .save(mailToEdit)
-      .then(() => setModalShow((isModalShow = !isModalShow)))
+      .then(() => {
+        setModalShow(false)
+        setShowBackdrop(false)
+      })
+      // .then(() => setModalShow((isModalShow = !isModalShow)))
       .catch((err) => console.log("err:", err))
   }
 
@@ -56,6 +64,12 @@ export function MailAdd() {
       <button className="compose-btn" onClick={onCompose}>
         📤 Compose
       </button>
+
+      <div
+        className={`backdrop ${showBackdrop ? "show" : ""}`}
+        onClick={closeCompose}
+      ></div>
+
       <div className={dynClass + " newMail-modal"}>
         <h1>New Email 📧</h1>
         <form onSubmit={onSendMail} className="newMail-form">
@@ -72,16 +86,6 @@ export function MailAdd() {
             name="subject"
             onChange={handleChange}
           />
-
-          {/* <label htmlFor="body"></label>
-          <input
-            className="body"
-            value={body}
-            type="text"
-            id="body"
-            name="body"
-            onChange={handleChange}
-          /> */}
 
           <label htmlFor="body"></label>
           <textarea
