@@ -45,8 +45,53 @@ function save(note) {
     }
 }
 
-function getEmptyNote() {
-    return _createNote('NoteTxt', { txt: '' })
+// function getEmptyNote() {
+//     return {
+//         createdAt: Date.now(),
+//         type: '',
+//         isPinned: false,
+//         style: {  },
+//         info: {
+//             title: '',
+//             txt: ''
+//         }
+//     }
+// }
+
+function getEmptyNote(type = 'NoteTxt') {
+    const emptyNote = {
+        createdAt: Date.now(),
+        type: type,
+        isPinned: false,
+        style: {},
+        info: {
+            title: '',
+            txt: '',
+        }
+    }
+
+    
+    switch (type) {
+        case 'NoteImg':
+            emptyNote.info.url = '' 
+            emptyNote.info.title = '' 
+            break;
+
+        case 'NoteVideo':
+            emptyNote.info.url = '' 
+            emptyNote.info.title = '' 
+            break;
+
+        case 'NoteTodos':
+            emptyNote.info.title = {}
+            emptyNote.info.todos = {} 
+            break;
+
+        default:
+            break;
+    }
+
+    return emptyNote
 }
 
 function getDefaultFilter() {
@@ -91,7 +136,7 @@ function _createVideoNote(url, title, backgroundColor = '#00d') {
     return _createNote('NoteVideo', { url, title }, backgroundColor)
 }
 
-function _createTextNote(txt, backgroundColor = '#00d') {
+function _createTextNote(title ,txt, backgroundColor = '#00d') {
     return _createNote('NoteTxt', { txt }, backgroundColor)
 }
 

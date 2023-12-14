@@ -1,0 +1,44 @@
+/* NotePreview.jsx */
+.note-preview {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+  }
+  
+  .note-preview h2 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .note-preview h4 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .note-preview img,
+  .note-preview video {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .note-preview ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .note-preview li {
+    margin-bottom: 5px;
+  }
+  
+  /* Add more specific styles for different note types as needed */
+  .note-img img {
+    width: 100%;
+    border-radius: 4px;
+  }
+  
+  .note-video video {
+    width: 100%;
+    border-radius: 4px;
+  }
