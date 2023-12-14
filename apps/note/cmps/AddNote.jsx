@@ -26,13 +26,13 @@ export function AddNote({ onAddNote }) {
     }
 
     function handleVideoChange(ev) {
-        const file = e.target.files[0]
+        const file = ev.target.files[0]
         setVideoFile(file)
     }
 
     function handleChangeColor(color){
         setSelectedColor(color)
-      }
+    }
 
     // function handleAddTodo() {
     //     if (newTodo.trim() !== '') {
@@ -82,7 +82,7 @@ export function AddNote({ onAddNote }) {
                     {/* <button onClick={() => setNoteType('NoteTodos')}>Add ToDo</button> */}
                     {/* <button type="button" onClick={handleChangeColor}>Change Color</button> */}
                     <label htmlFor="color">Select Color:</label>
-                    <select id="color" name="color" value={selectedColor} onChange={(e) => handleChangeColor(e.target.value)}>
+                    <select id="color" name="color" value={selectedColor} onChange={(ev) => handleChangeColor(ev.target.value)}>
                     <option value="#fff">White</option>
                     <option value="#ff0000">Red</option>
                     <option value="#00ff00">Green</option>
@@ -108,7 +108,7 @@ export function AddNote({ onAddNote }) {
                     <label htmlFor="image">Add Image: </label>
                     <input type="file" id="image" name="image" accept="image/*" onChange={handleImageChange} />
                     <label htmlFor="color">Select Color:</label>
-                    <select id="color" name="color" value={selectedColor} onChange={(e) => handleChangeColor(e.target.value)}>
+                    <select id="color" name="color" value={selectedColor} onChange={(ev) => handleChangeColor(ev.target.value)}>
                     <option value="#fff">White</option>
                     <option value="#ff0000">Red</option>
                     <option value="#00ff00">Green</option>
@@ -135,7 +135,7 @@ export function AddNote({ onAddNote }) {
                     {/* <button onClick={() => setNoteType('NoteTodos')}>Add ToDo</button> */}
                     {/* <button type="button" onClick={handleChangeColor}>Change Color</button> */}
                     <label htmlFor="color">Select Color:</label>
-                    <select id="color" name="color" value={selectedColor} onChange={(e) => handleChangeColor(e.target.value)}>
+                    <select id="color" name="color" value={selectedColor} onChange={(ev) => handleChangeColor(ev.target.value)}>
                     <option value="#fff">White</option>
                     <option value="#ff0000">Red</option>
                     <option value="#00ff00">Green</option>

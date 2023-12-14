@@ -1,5 +1,25 @@
 .note-video {
-    background-color: #fff;
-    padding: 10px;
-    border: 1px solid #ccc;
-  }
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease-in-out;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.note-video:hover {
+  background-color: #f9f9f9;
+}
+
+.h4 {
+  margin-bottom: 8px;
+  font-size: 18px;
+  color: #333;
+}
+
+video {
+  width: 100%;
+  border-radius: 8px;
+}

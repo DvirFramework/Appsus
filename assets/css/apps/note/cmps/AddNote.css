@@ -45,6 +45,7 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #fff;
+    margin-bottom: 40px;
   }
   
   .add-note h2 {
@@ -59,6 +60,7 @@
   
   .add-note label {
     margin-bottom: 5px;
+    font-family: Arial, Helvetica, sans-serif;
   }
   
   .add-note input,
@@ -74,6 +76,7 @@
     background-color: #007bff;
     color: #fff;
     border: none;
+    margin: 10px;
   }
   
   .add-note button:hover {
