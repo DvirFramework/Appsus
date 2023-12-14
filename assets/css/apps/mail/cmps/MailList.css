@@ -4,11 +4,10 @@
   padding-left: 5px;
   list-style: none;
   background-color: #fff;
-  color: #202124;
   grid-row: 2;
   /* opacity: 80%; */
 }
 
 .mail-list li {
-  border-top: 0.5px solid black;
+  border-top: 0.5px solid rgb(204, 204, 204);
 }

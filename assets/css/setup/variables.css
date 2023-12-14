@@ -1,3 +1,7 @@
 :root {
-    --main-bg-color: lightblue;
+  --main-bg-color: lightblue;
+
+  /* Mail Vars */
+  --bold-clr: #202124;
+  --mailBodyTxt-clr: #5f6368;
 }

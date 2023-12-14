@@ -94,10 +94,6 @@ function getDefaultFilter() {
   return { to: email }
 }
 
-// function getDefaultFilter() {
-//   return { from: "momo@momo.com" }
-// }
-
 // function getFilterFromQueryString(searchParams) {
 //   const txt = searchParams.get("txt") || ""
 //   const minSpeed = searchParams.get("minSpeed") || ""

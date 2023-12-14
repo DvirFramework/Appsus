@@ -1,10 +1,20 @@
 .mail-preview .from-mail h1 {
   font-size: 1.2em;
   font-weight: bolder;
+  color: var(--bold-clr);
 }
 
 .mail-preview .mail-body .mail-subject {
   margin-inline-end: 10px;
+  color: var(--bold-clr);
+}
+
+.mail-preview .mail-body .mail-txt {
+  color: var(--mailBodyTxt-clr);
+}
+
+.mail-preview .date-mail {
+  color: var(--bold-clr);
 }
 
 .mail-preview .date-mail {
