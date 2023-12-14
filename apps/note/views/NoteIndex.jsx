@@ -4,13 +4,14 @@ const { Link, useSearchParams } = ReactRouterDOM
 import { AddNote } from "../cmps/AddNote.jsx"
 import { NoteList } from "../cmps/NoteList.jsx"
 import { noteService } from "../services/note.service.js"
+import { showSuccessMsg } from "../../../services/event-bus.service.js"
 
 const { useState, useEffect } = React
 
 
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
-    const [noteToAdd, setNoteToAdd] = useState(noteService.getEmptyNote())
+    // const [noteToAdd, setNoteToAdd] = useState(noteService.getEmptyNote())
     // const [searchParams, setSearchParams] = useSearchParams()
     // const [filterBy, setFilterBy] = useState(noteService.getFilterFromQueryString(searchParams))
 
@@ -44,6 +45,18 @@ export function NoteIndex() {
 
     }
 
+    function onAddNote(note) {
+        noteService.save(note)
+            .then(() => {
+                // const newNote = notes.filter(note => note.id !== noteId)
+                // setNotes(newNotes)
+                setNotes(prevNotes => [...prevNotes, note])
+                showSuccessMsg(`Note successfully Added! ${note.type}`)
+            })
+            .catch(err => console.log('err:', err))
+
+    }
+
     
     // function onSetFilter(filterBy) {
     //     // setFilterBy(filterBy)
@@ -57,7 +70,7 @@ export function NoteIndex() {
     return (
         <section className="note-index">
             {/* <NoteFilter filterBy={{ txt, minSpeed }} onSetFilter={onSetFilter} /> */}
-            <AddNote />
+            <AddNote onAddNote={onAddNote}/>
             <NoteList notes={notes} onRemoveNote={onRemoveNote} />
         </section>
     )

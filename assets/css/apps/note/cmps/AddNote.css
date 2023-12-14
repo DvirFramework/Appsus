@@ -1,6 +1,6 @@
 /* AddNote.css */
 
-.add-note {
+/* .add-note {
     background-color: #f0f0f0;
     padding: 20px;
     border-radius: 8px;
@@ -35,5 +35,47 @@
   
   .add-note button:hover {
     background-color: #79caed;
+  } */
+  
+
+  .add-note {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
   }
   
+  .add-note h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .add-note form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-note label {
+    margin-bottom: 5px;
+  }
+  
+  .add-note input,
+  .add-note button {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .add-note button {
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+  }
+  
+  .add-note button:hover {
+    background-color: #0056b3;
+  }
