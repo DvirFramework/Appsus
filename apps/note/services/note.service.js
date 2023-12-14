@@ -15,21 +15,17 @@ export const noteService = {
     getFilterFromQueryString
 }
 
-function query() {
+function query(filterBy) {
     return asyncStorageService.query(NOTE_KEY)
         .then(notes => {
-            // if (filterBy.txt) {
-            //     const regExp = new RegExp(filterBy.txt, 'i')
-            //     notes = notes.filter(note => regExp.test(note.vendor))
-            // }
-            // if (filterBy.minSpeed) {
-            //     notes = notes.filter(note => note.maxSpeed >= filterBy.minSpeed)
-            // }
+            if (filterBy.type) {
+                notes = notes.filter(note => note.type===filterBy.type)
+            }
             return notes
         })
 }
 
-function get(noteId) {
+function get(noteId) {  
     return asyncStorageService.get(NOTE_KEY, noteId)
 }
 
@@ -137,7 +133,7 @@ function _createVideoNote(url, title, backgroundColor = '#00d') {
 }
 
 function _createTextNote(title ,txt, backgroundColor = '#00d') {
-    return _createNote('NoteTxt', { txt }, backgroundColor)
+    return _createNote('NoteTxt', { title,txt }, backgroundColor)
 }
 
 function _createImageNote(url, title, backgroundColor = '#00d') {
@@ -154,7 +150,7 @@ function _createNotes() {
         notes = []
 
         // Create a text note
-        notes.push(_createTextNote('Fullstack Me Baby!'))
+        notes.push(_createTextNote('Have Fun ','Fullstack!'))
 
         // Create an image note
         notes.push(_createImageNote('http://some-img/me', 'Bobi and Me'))
