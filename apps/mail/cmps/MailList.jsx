@@ -1,6 +1,6 @@
 import { MailPreview } from "./MailPreview.jsx"
 const { Link } = ReactRouterDOM
-export function MailList({ mails }) {
+export function MailList({ mails, onUpdateMail }) {
   const ulProps = {
     className: "mail-list , mail-list-main-layout"
   }
@@ -8,7 +8,7 @@ export function MailList({ mails }) {
     <ul {...ulProps}>
       {mails.map((mail) => (
         <li key={mail.id}>
-          <MailPreview mail={mail} />
+          <MailPreview mail={mail} onUpdateMail={onUpdateMail} />
         </li>
       ))}
     </ul>

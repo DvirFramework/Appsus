@@ -12,7 +12,6 @@ export function MailAdd() {
   function handleChange({ target }) {
     const field = target.name
     let value = target.value
-    console.log("value:", value)
     switch (target.type) {
       case "number":
       case "range":
@@ -27,7 +26,11 @@ export function MailAdd() {
         break
     }
 
-    setMailToEdit((prevMail) => ({ ...prevMail, [field]: value }))
+    setMailToEdit((prevMail) => ({
+      ...prevMail,
+      [field]: value,
+      from: "user@appsus.com"
+    }))
   }
 
   function onCompose() {
@@ -43,7 +46,7 @@ export function MailAdd() {
     mailService.getEmptyMail()
     mailService
       .save(mailToEdit)
-      .then(() => navigate("/mail"))
+      .then(() => setModalShow((isModalShow = !isModalShow)))
       .catch((err) => console.log("err:", err))
   }
 
@@ -52,7 +55,7 @@ export function MailAdd() {
     <section className="mail-add">
       <button onClick={onCompose}>Compose</button>
       <div className={dynClass + " newMail-modal"}>
-        <h1>New Message</h1>
+        <h1>New Email 📧</h1>
         <form onSubmit={onSendMail} className="newMail-form">
           <p>From : your mail</p>
 

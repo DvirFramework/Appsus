@@ -1,9 +1,18 @@
-export function MailPreview({ mail }) {
+const { useState, useEffect } = React
+const { useRef } = React
+
+export function MailPreview({ mail, onUpdateMail }) {
   const options = { hour: "numeric", minute: "numeric" }
+
+  function onStarMail() {
+    const newMail = { ...mail, isStar: !mail.isStar }
+    onUpdateMail(newMail)
+  }
+
   return (
     <article className="mail-preview mail-preview-layout">
       <div className="signal-mail flex align-center">
-        <button>⭐</button>
+        <button onClick={onStarMail}>{mail.isStar ? "⭐" : "☆"}</button>
       </div>
 
       <div className="from-mail flex align-center">

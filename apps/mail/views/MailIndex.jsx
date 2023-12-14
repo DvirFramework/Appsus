@@ -8,56 +8,53 @@ const { Link, useSearchParams } = ReactRouterDOM
 
 export function MailIndex() {
   const [mails, setMails] = useState(null)
-  //   const [searchParams, setSearchParams] = useSearchParams()
-  //   const [filterBy, setFilterBy] = useState(
-  //     mailService.getFilterFromQueryString(searchParams)
-  //   )
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const loggedInUser = mailService.getLoggedInUser()
+  const [filterBy, setFilterBy] = useState({
+    to: loggedInUser.email,
+    subject: "",
+    body: ""
+  })
 
   useEffect(() => {
     loadMails()
     // setSearchParams(filterBy)
     return () => {
-      console.log("Bye Bye")
+      //   console.log("Bye Bye")
     }
-  }, [])
+  }, [filterBy])
 
   function loadMails() {
     console.log("load mails")
     mailService
-      //   .query(filterBy)
-      .query()
+      .query(filterBy)
+      //   .query()
       .then((mails) => setMails(mails))
       .catch((err) => console.log("err:", err))
   }
 
-  function onRemoveMail(mailId) {
-    mailService
-      .remove(mailId)
-      .then(() => {
-        // const newCars = mails.filter(car => car.id !== carId)
-        // setMails(newCars)
-        setMails((prevMails) => {
-          return prevMails.filter((mail) => mail.id !== mailId)
-        })
-        //   showSuccessMsg(`Mail successfully removed! ${mailId}`)
-      })
-      .catch((err) => console.log("err:", err))
+  function onUpdateMail(mail) {
+    mailService.save(mail).then((mail) => {
+      setMails((prevMails) =>
+        prevMails.map((m) => (m.id === mail.id ? mail : m))
+      )
+    })
   }
 
-  //   function onSetFilter(filterBy) {
-  //     // setFilterBy(filterBy)
-  //     setFilterBy((prevFilter) => ({ ...prevFilter, ...filterBy }))
-  //   }
-
-  //   const { txt, minSpeed, maxPrice } = filterBy
+  function onSetFilter(newFilterBy) {
+    // setFilterBy(filterBy)
+    // setFilterBy((prevFilter) => ({ ...prevFilter, ...filterBy }))
+    setFilterBy(newFilterBy)
+  }
 
   if (!mails) return <div>Loading...</div>
   return (
     <section className="mail-index main-mail-layout ">
       <MailAdd />
-      <MailFilter />
+      <MailFilter onSetFilter={onSetFilter} filterBy={filterBy} />
       <MailFolder />
-      <MailList mails={mails} onRemoveCar={onRemoveMail} />
+      <MailList mails={mails} onUpdateMail={onUpdateMail} />
     </section>
   )
 }
