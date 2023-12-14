@@ -8,7 +8,7 @@
 
 .mail-preview-layout {
   display: grid;
-  grid-template-columns: 100px 250px 1fr 150px;
+  grid-template-columns: 80px 280px 1fr 150px;
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;

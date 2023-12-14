@@ -4,9 +4,9 @@ export function MailFolder() {
       <div className="mail-folderBy">
         <button>Inbox</button>
         <button>Starred</button>
-        <button>Snoozed</button>
         <button>Sent</button>
         <button>Draft</button>
+        <button>Trah</button>
       </div>
     </section>
   )

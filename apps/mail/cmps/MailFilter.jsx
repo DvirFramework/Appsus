@@ -24,10 +24,12 @@ export function MailFilter({ filterBy, onSetFilter }) {
   const { query } = filterByToEdit
   return (
     <section className="mail-filter">
+      <span className="search-icon">🔎</span>
       <div className="mail-filterby">
         <form onSubmit={onSetFilterBy}>
           <label htmlFor="query"></label>
           <input
+            placeholder="Search"
             value={query}
             onChange={handleChange}
             type="text"

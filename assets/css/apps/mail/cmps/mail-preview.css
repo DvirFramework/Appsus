@@ -1,5 +1,6 @@
 .mail-preview {
   font-family: "Roboto", sans-serif;
+  cursor: pointer;
 }
 
 .mail-preview .from-mail h1 {
@@ -24,4 +25,22 @@
 .mail-preview .date-mail {
   justify-self: end;
   padding-right: 10px;
+}
+
+.mail-preview .star-mail button {
+  cursor: pointer;
+  border: none;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  color: var(--mailBodyTxt-clr);
+  background-color: none;
+  font-size: 2em;
+}
+
+.mail-preview .star-mail i {
+  color: var(--star-clr);
+}
+
+.mail-read-bg {
+  background-color: var(--mailRead-bg-clr);
 }

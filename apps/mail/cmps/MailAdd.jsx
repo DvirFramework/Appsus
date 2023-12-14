@@ -53,11 +53,13 @@ export function MailAdd() {
   const { to, subject, body } = mailToEdit
   return (
     <section className="mail-add">
-      <button onClick={onCompose}>Compose</button>
+      <button className="compose-btn" onClick={onCompose}>
+        📤 Compose
+      </button>
       <div className={dynClass + " newMail-modal"}>
         <h1>New Email 📧</h1>
         <form onSubmit={onSendMail} className="newMail-form">
-          <p>From : your mail</p>
+          <p>From : Your-Mail</p>
 
           <label htmlFor="to">To</label>
           <input type="email" id="to" name="to" onChange={handleChange} />
@@ -71,14 +73,24 @@ export function MailAdd() {
             onChange={handleChange}
           />
 
-          <label htmlFor="body"></label>
+          {/* <label htmlFor="body"></label>
           <input
+            className="body"
             value={body}
             type="text"
             id="body"
             name="body"
             onChange={handleChange}
-          />
+          /> */}
+
+          <label htmlFor="body"></label>
+          <textarea
+            name="body"
+            id="body"
+            cols="30"
+            rows="10"
+            onChange={handleChange}
+          ></textarea>
 
           <button className="btn-sendMail">Send</button>
         </form>

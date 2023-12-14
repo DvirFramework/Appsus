@@ -1,11 +1,26 @@
 .mail-add {
+  font-family: "Roboto", sans-serif;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  background-color: var(--bg-color);
+}
+
+.mail-add .compose-btn {
+  /* font-family: "Roboto", sans-serif; */
+  cursor: pointer;
+  background-color: rgb(216, 246, 255);
+  color: var(--mailBodyTxt-clr);
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.2em;
 }
 
 .newMail-modal {
+  /* font-family: "Roboto", sans-serif; */
   position: fixed;
   width: 450px;
   height: 450px;
@@ -25,6 +40,15 @@
   display: none;
 }
 
+.newMail-modal h1 {
+  background-color: var(--mailRead-bg-clr);
+  color: var(--bold-clr);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
 .newMail-modal .btn-closeMail {
   cursor: pointer;
   position: absolute;
@@ -37,14 +61,40 @@
   padding-inline-start: 7px;
 }
 
-.newMail-modal .btn-sendMail {
-}
-
 .newMail-form {
   display: flex;
   flex-direction: column;
 }
 
+.newMail-form label {
+  font-size: 1.4em;
+  color: var(--bold-clr);
+}
+
 .newMail-form input {
   margin-block-start: 10px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+.newMail-form input:focus {
+  outline: none;
+}
+
+.newMail-form textarea {
+  background-color: rgb(255, 255, 255);
+  border: none;
+  resize: none;
+  /* font-size: 1.2em; */
+}
+
+.newMail-form .btn-sendMail {
+  margin-top: 20px;
+  cursor: pointer;
+  border: none;
+  background-color: #0b57d0;
+  color: #fff;
 }

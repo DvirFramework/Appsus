@@ -1,8 +1,13 @@
 :root {
   --main-bg-color: lightblue;
+  --black-clr: #000;
 
   /* Mail Vars */
+  --bg-color: #f5f7f8;
   --bold-clr: #202124;
   --mailBodyTxt-clr: #5f6368;
   --light-border-clr: rgb(204, 204, 204);
+  --filter-input-clr: #e7e7e7;
+  --mailRead-bg-clr: #f7f5f5;
+  --star-clr: rgb(255, 217, 0);
 }
