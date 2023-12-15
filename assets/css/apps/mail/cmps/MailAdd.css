@@ -72,9 +72,14 @@
   right: -9px;
   border-radius: 50%;
   border: 2px solid lightgrey;
-  box-shadow: 3px 3px 6px rgb(173 173 173);
+  box-shadow: 3px 3px 6px rgb(123 123 123);
   line-height: 1.3;
   padding-inline-start: 7px;
+  transition: all 0.4s;
+}
+
+.newMail-modal .btn-closeMail:hover {
+  background-color: rgb(196, 195, 195);
 }
 
 .newMail-form {
@@ -111,8 +116,13 @@
   cursor: pointer;
   border: none;
   background-color: var(--sendMail-btn-clr);
-  color: #fff;
+  color: var(--white-clr);
   width: 60px;
   padding: 10px;
   border-radius: 7px;
+  transition: all 0.4s;
+}
+
+.newMail-form .btn-sendMail:hover {
+  background-color: var(--sendMail-btn-clr-hover);
 }

@@ -84,6 +84,7 @@ function getEmptyMail(subject = "", body = "", isRead, from, sentAt) {
     isStar: false,
     sentAt,
     removedAt: null,
+    isTrash: false,
     from,
     to: "user@appsus.com"
   }

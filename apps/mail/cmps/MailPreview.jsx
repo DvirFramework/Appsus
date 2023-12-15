@@ -1,9 +1,14 @@
 const { useState, useEffect } = React
 const { useRef } = React
-export function MailPreview({ mail, onUpdateMail }) {
-  const styles = {
-    color: "#3498db"
-  }
+export function MailPreview({
+  mail,
+  onUpdateMail,
+  onRemoveMail,
+  onMoveMailtoTrash,
+  onMarkMailAsRead,
+  onMarkMailAsUnRead
+}) {
+  const [isHovered, setIsHovered] = useState(false)
 
   const sentDate = new Date(mail.sentAt)
   const currentDate = new Date()
@@ -28,12 +33,31 @@ export function MailPreview({ mail, onUpdateMail }) {
     onUpdateMail(newMail)
   }
 
+  function handleMouseEnter() {
+    setIsHovered(true)
+  }
+
+  function handleMouseLeave() {
+    setIsHovered(false)
+  }
+
+  function onToggleReadStatus() {
+    const updatedMail = { ...mail, isRead: !mail.isRead }
+    if (mail.isRead) {
+      onMarkMailAsUnRead(updatedMail)
+    } else {
+      onMarkMailAsRead(updatedMail)
+    }
+  }
+
   return (
     <article
       className={
         (mail.isRead ? "mail-read-bg" : "") +
         " mail-preview mail-preview-layout"
       }
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="star-mail flex align-center">
         <button onClick={onStarMail}>
@@ -44,10 +68,6 @@ export function MailPreview({ mail, onUpdateMail }) {
             <i className="fa-regular fa-star"></i>
           )}
         </button>
-        {/* <button onClick={onStarMail}>
-          <i className="fa-regular fa-star"></i>
-          <i className="fa-solid fa-star"></i>
-        </button> */}
       </div>
 
       <div className="from-mail flex align-center">
@@ -63,10 +83,28 @@ export function MailPreview({ mail, onUpdateMail }) {
         </div>
       </div>
 
-      <div className="date-mail flex align-center">
-        {/* <h3> {new Date(mail.sentAt).toLocaleString("en-US", options)}</h3> */}
-        <h3>{formattedDate}</h3>
-      </div>
+      {isHovered ? (
+        <div className="mail-actions">
+          <button
+            className="dltMail-btn"
+            title="Delete"
+            onClick={() => onMoveMailtoTrash(mail)}
+          >
+            🗑
+          </button>
+          <button
+            className="readMail-btn"
+            title={mail.isRead ? "Mark as unread" : "Mark as read"}
+            onClick={onToggleReadStatus}
+          >
+            {mail.isRead ? "📧" : "📩"}
+          </button>
+        </div>
+      ) : (
+        <div className="date-mail flex align-center">
+          <h3>{formattedDate}</h3>
+        </div>
+      )}
     </article>
   )
 }

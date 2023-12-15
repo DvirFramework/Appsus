@@ -20,11 +20,27 @@
 
 .mail-preview .date-mail {
   color: var(--bold-clr);
-}
-
-.mail-preview .date-mail {
   justify-self: end;
   padding-right: 10px;
+}
+
+.mail-preview .mail-actions {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  padding-right: 10px;
+}
+
+.mail-preview .mail-actions button {
+  cursor: pointer;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  font-size: 1.5em;
+}
+
+.mail-preview .mail-actions .dltMail-btn {
+  font-size: 2em;
 }
 
 .mail-preview .star-mail button {

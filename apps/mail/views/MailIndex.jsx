@@ -34,6 +34,32 @@ export function MailIndex() {
       .catch((err) => console.log("err:", err))
   }
 
+  function onRemoveMail(mailId) {
+    mailService
+      .remove(mailId)
+      .then(() => {
+        setMails((prevMails) => {
+          //   showSuccessMsg("mail succssefuly removed!")
+          // console.log("prevBooks:", prevBooks)
+          return prevMails.filter((mail) => mail.id !== mailId)
+        })
+      })
+      .catch((err) => console.log("err:", err))
+  }
+
+  function onMoveMailtoTrash(mail) {
+    mail.isTrash = true
+    onUpdateMail(mail)
+  }
+  function onMarkMailAsRead(mail) {
+    mail.isRead = true
+    onUpdateMail(mail)
+  }
+  function onMarkMailAsUnRead(mail) {
+    mail.isRead = false
+    onUpdateMail(mail)
+  }
+
   function onUpdateMail(mail) {
     mailService.save(mail).then((mail) => {
       setMails((prevMails) =>
@@ -54,7 +80,14 @@ export function MailIndex() {
       <MailAdd />
       <MailFilter onSetFilter={onSetFilter} filterBy={filterBy} />
       <MailFolder />
-      <MailList mails={mails} onUpdateMail={onUpdateMail} />
+      <MailList
+        mails={mails}
+        onUpdateMail={onUpdateMail}
+        onRemoveMail={onRemoveMail}
+        onMoveMailtoTrash={onMoveMailtoTrash}
+        onMarkMailAsRead={onMarkMailAsRead}
+        onMarkMailAsUnRead={onMarkMailAsUnRead}
+      />
     </section>
   )
 }
