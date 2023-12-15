@@ -79,7 +79,7 @@ export function MailIndex() {
     <section className="mail-index main-mail-layout ">
       <MailAdd />
       <MailFilter onSetFilter={onSetFilter} filterBy={filterBy} />
-      <MailFolder />
+      <MailFolder onSetFilter={onSetFilter} filterBy={filterBy} mails={mails} />
       <MailList
         mails={mails}
         onUpdateMail={onUpdateMail}

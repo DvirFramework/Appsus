@@ -1,3 +1,4 @@
+import { MailDetail } from "./MailDetail.jsx"
 const { useState, useEffect } = React
 const { useRef } = React
 export function MailPreview({
@@ -6,10 +7,11 @@ export function MailPreview({
   onRemoveMail,
   onMoveMailtoTrash,
   onMarkMailAsRead,
-  onMarkMailAsUnRead
+  onMarkMailAsUnRead,
+  showMailDetail
 }) {
   const [isHovered, setIsHovered] = useState(false)
-
+  // const [isMailTrash, setIsMailTrash] = useState(false)
   const sentDate = new Date(mail.sentAt)
   const currentDate = new Date()
 
@@ -50,6 +52,11 @@ export function MailPreview({
     }
   }
 
+  function removeToTrash() {
+    mail.isTrash === true
+  }
+
+  if (mail.isTrash) return ""
   return (
     <article
       className={
@@ -70,11 +77,11 @@ export function MailPreview({
         </button>
       </div>
 
-      <div className="from-mail flex align-center">
+      <div className="from-mail flex align-center" onClick={showMailDetail}>
         <h1>{mail.from}</h1>
       </div>
 
-      <div className="mail-body flex align-center">
+      <div className="mail-body flex align-center" onClick={showMailDetail}>
         <div className="mail-subject">
           <h1>{mail.subject} - </h1>
         </div>
@@ -88,7 +95,10 @@ export function MailPreview({
           <button
             className="dltMail-btn"
             title="Delete"
-            onClick={() => onMoveMailtoTrash(mail)}
+            onClick={() => {
+              removeToTrash()
+              onMoveMailtoTrash(mail)
+            }}
           >
             🗑
           </button>

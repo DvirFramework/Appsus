@@ -1,6 +1,11 @@
 .mail-preview {
   font-family: "Roboto", sans-serif;
   cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+.mail-preview:hover {
+  background-color: var(--onHoverMail-clr);
 }
 
 .mail-preview .from-mail h1 {

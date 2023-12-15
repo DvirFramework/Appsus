@@ -12,7 +12,8 @@ export const mailService = {
   save,
   getEmptyMail,
   getDefaultFilter,
-  getLoggedInUser
+  getLoggedInUser,
+  getMailsFromLoggedInUser
   // getFilterFromQueryString
 }
 
@@ -23,6 +24,14 @@ const loggedinUser = {
 
 function getLoggedInUser() {
   return loggedinUser
+}
+
+function getMailsFromLoggedInUser() {
+  return asyncStorageService.query(MAIL_KEY).then((mails) => {
+    return mails.filter(
+      (mail) => mail.from.toLowerCase() === loggedinUser.email.toLowerCase()
+    )
+  })
 }
 
 function query(filterBy) {
@@ -76,12 +85,12 @@ function save(mail) {
   }
 }
 
-function getEmptyMail(subject = "", body = "", isRead, from, sentAt) {
+function getEmptyMail(subject = "", body = "", isRead, from, sentAt, isStar) {
   return {
     subject,
     body,
     isRead,
-    isStar: false,
+    isStar,
     sentAt,
     removedAt: null,
     isTrash: false,
@@ -117,7 +126,8 @@ function _createMails() {
         "Welcome to our newsletter, Thanks for subscribing to our newsletter! Stay tuned for exciting updates.",
         true,
         "johndoe@gmail.com",
-        Date.now()
+        Date.now(),
+        true
       )
     )
     mails.push(
@@ -126,7 +136,8 @@ function _createMails() {
         "Your Order Confirmation, Your order has been confirmed. You can track your shipment using the provided link.",
         false,
         "amazon@gmail.com",
-        Date.now() - 2 * 60 * 60 * 1000
+        Date.now() - 2 * 60 * 60 * 1000,
+        false
       )
     )
     mails.push(
@@ -135,7 +146,8 @@ function _createMails() {
         "Invitation to a Party, You're invited to our annual party this weekend. Don't miss the fun!",
         false,
         "janesmith@gmail.com",
-        Date.now() - 4 * 86400000
+        Date.now() - 4 * 86400000,
+        false
       )
     )
     mails.push(
@@ -144,7 +156,8 @@ function _createMails() {
         "Weekly Technology Digest, Catch up on the latest in technology with our weekly digest.",
         false,
         "technews@gmail.com",
-        Date.now() - 5 * 86400000
+        Date.now() - 5 * 86400000,
+        false
       )
     )
     mails.push(
@@ -153,7 +166,8 @@ function _createMails() {
         "Important Account Update, Please review your recent account activity. If you notice any unauthorized transactions, contact us immediately.",
         false,
         "bankofusa@gmail.com",
-        Date.now() - 9 * 86400000
+        Date.now() - 9 * 86400000,
+        false
       )
     )
     mails.push(
@@ -162,7 +176,8 @@ function _createMails() {
         "Exclusive Travel Deals, Explore our exclusive travel deals and plan your next adventure!",
         true,
         "travelagency@gmail.com",
-        Date.now() - 12 * 86400000
+        Date.now() - 12 * 86400000,
+        true
       )
     )
     mails.push(
@@ -171,7 +186,8 @@ function _createMails() {
         "Tips for a Healthy Lifestyle,Discover tips and tricks for maintaining a healthy lifestyle.",
         false,
         "healthwellness@gmail.com",
-        Date.now() - 12 * 86400000
+        Date.now() - 12 * 86400000,
+        false
       )
     )
     mails.push(
@@ -180,7 +196,8 @@ function _createMails() {
         "Exciting Job Offer Inside, We're impressed with your profile and would like to offer you a job opportunity at our company.",
         false,
         "jobopportunity@gmail.com",
-        Date.now() - 16 * 86400000
+        Date.now() - 16 * 86400000,
+        false
       )
     )
     mails.push(
@@ -189,7 +206,8 @@ function _createMails() {
         "New Releases This Month ,Check out the latest movies and TV shows added to our library this month.",
         false,
         "netflix@gmail.com",
-        Date.now() - 19 * 86400000
+        Date.now() - 19 * 86400000,
+        false
       )
     )
     mails.push(
@@ -198,7 +216,8 @@ function _createMails() {
         "30-Day Workout Challenge, Embark on a 30-day workout challenge for a healthier you.",
         true,
         "fitnessguru@gmail.com",
-        Date.now() - 24 * 86400000
+        Date.now() - 24 * 86400000,
+        true
       )
     )
     mails.push(
@@ -207,7 +226,8 @@ function _createMails() {
         "Stay updated on the latest trends and innovations in the tech world.",
         false,
         "techblog@gmail.com",
-        Date.now() - 27 * 86400000
+        Date.now() - 27 * 86400000,
+        false
       )
     )
 
@@ -217,7 +237,8 @@ function _createMails() {
         "Explore mouth-watering recipes and culinary delights in our latest issue.",
         false,
         "foodiemag@gmail.com",
-        Date.now() - 34 * 86400000
+        Date.now() - 34 * 86400000,
+        false
       )
     )
 
@@ -227,7 +248,8 @@ function _createMails() {
         "Get expert tips and advice to help you reach your fitness goals.",
         true,
         "fitnesstips@gmail.com",
-        Date.now() - 38 * 86400000
+        Date.now() - 38 * 86400000,
+        true
       )
     )
 
@@ -237,7 +259,8 @@ function _createMails() {
         "Discover the latest news, releases, and updates from the gaming world.",
         false,
         "gamingnews@gmail.com",
-        Date.now() - 40 * 86400000
+        Date.now() - 40 * 86400000,
+        false
       )
     )
 
@@ -247,7 +270,8 @@ function _createMails() {
         "Explore incredible travel destinations and plan your next adventure.",
         false,
         "traveladventures@gmail.com",
-        Date.now() - 48 * 86400000
+        Date.now() - 48 * 86400000,
+        false
       )
     )
 
@@ -255,8 +279,8 @@ function _createMails() {
   }
 }
 
-function _createMail(subject, body = "", isRead, from, sentAt) {
-  const mail = getEmptyMail(subject, body, isRead, from, sentAt)
+function _createMail(subject, body = "", isRead, from, sentAt, isStar) {
+  const mail = getEmptyMail(subject, body, isRead, from, sentAt, isStar)
   mail.id = utilService.makeId()
   return mail
 }
