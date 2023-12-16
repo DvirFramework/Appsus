@@ -1,14 +1,14 @@
 header {
-  /* background: rgb(233, 255, 255); */
   background-color: rgb(255, 255, 211);
   border-bottom: 2px solid white;
   font-family: "Roboto", sans-serif;
+  height: 10vh;
 }
 
 .app-header {
   display: flex;
   justify-content: space-between;
-  padding: 20px 0;
+  /* padding: 20px 0; */
   align-items: center;
   padding: 20px 30px;
 }
@@ -16,10 +16,6 @@ header {
 nav a {
   margin: 0.5em;
   font-size: 1.3em;
-}
-
-nav a:active {
-  color: purple;
 }
 
 nav a.active {
