@@ -19,21 +19,32 @@ export function MailList({
   }
 
   const [isMailClick, setIsMailClick] = useState(false)
+  const [selectedMail, setSelectedMail] = useState(null)
 
-  function showMailDetail() {
-    // ;<MailDetail />
-    console.log("click")
+  function showMailDetail(mail) {
+    setSelectedMail(mail)
     setIsMailClick(true)
   }
 
   function hideMailDetail() {
+    setSelectedMail(null)
     setIsMailClick(false)
+  }
+
+  function passMailDetail(mail) {
+    console.log("mail:", mail)
+    return mail
   }
 
   if (isMailClick)
     return (
       <section {...detailProp}>
-        <button onClick={hideMailDetail}>x</button>
+        <MailDetail
+          hideMailDetail={hideMailDetail}
+          passMailDetail={passMailDetail}
+          selectedMail={selectedMail}
+        />
+        {/* <button onClick={hideMailDetail}>x</button> */}
       </section>
     )
   return (
@@ -48,6 +59,7 @@ export function MailList({
             onMarkMailAsRead={onMarkMailAsRead}
             onMarkMailAsUnRead={onMarkMailAsUnRead}
             showMailDetail={showMailDetail}
+            passMailDetail={passMailDetail}
           />
         </li>
       ))}

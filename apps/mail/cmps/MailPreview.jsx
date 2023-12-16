@@ -8,10 +8,10 @@ export function MailPreview({
   onMoveMailtoTrash,
   onMarkMailAsRead,
   onMarkMailAsUnRead,
-  showMailDetail
+  showMailDetail,
+  passMailDetail
 }) {
   const [isHovered, setIsHovered] = useState(false)
-  // const [isMailTrash, setIsMailTrash] = useState(false)
   const sentDate = new Date(mail.sentAt)
   const currentDate = new Date()
 
@@ -56,11 +56,12 @@ export function MailPreview({
     mail.isTrash === true
   }
 
-  if (mail.isTrash) return ""
+  // if (mail.isTrash) return null
   return (
     <article
       className={
         (mail.isRead ? "mail-read-bg" : "") +
+        (mail.isTrash ? "trashMail" : "") +
         " mail-preview mail-preview-layout"
       }
       onMouseEnter={handleMouseEnter}
@@ -77,11 +78,20 @@ export function MailPreview({
         </button>
       </div>
 
-      <div className="from-mail flex align-center" onClick={showMailDetail}>
+      <div
+        className="from-mail flex align-center"
+        onClick={() => {
+          passMailDetail(mail)
+          showMailDetail(mail)
+        }}
+      >
         <h1>{mail.from}</h1>
       </div>
 
-      <div className="mail-body flex align-center" onClick={showMailDetail}>
+      <div
+        className="mail-body flex align-center"
+        onClick={() => showMailDetail(mail)}
+      >
         <div className="mail-subject">
           <h1>{mail.subject} - </h1>
         </div>
@@ -94,7 +104,7 @@ export function MailPreview({
         <div className="mail-actions">
           <button
             className="dltMail-btn"
-            title="Delete"
+            title="Move to Trash"
             onClick={() => {
               removeToTrash()
               onMoveMailtoTrash(mail)

@@ -17,6 +17,10 @@ export const mailService = {
   // getFilterFromQueryString
 }
 
+// const TrashMails_KEY = "trashMailDB"
+// let TrashMails = []
+// storageService.saveToStorage(TrashMails_KEY, TrashMails)
+
 const loggedinUser = {
   email: "user@appsus.com",
   fullname: "Mahatma Appsus"
@@ -35,7 +39,7 @@ function getMailsFromLoggedInUser() {
 }
 
 function query(filterBy) {
-  const { to, query } = filterBy
+  const { to, query, isStar, isTrash } = filterBy
 
   return asyncStorageService.query(MAIL_KEY).then((mails) => {
     let filteredMails = mails
@@ -63,6 +67,14 @@ function query(filterBy) {
           mail.subject.toLowerCase().includes(queryLowerCase) ||
           mail.body.toLowerCase().includes(queryLowerCase)
       )
+    }
+
+    if (isStar) {
+      filteredMails = filteredMails.filter((mail) => mail.isStar)
+    }
+
+    if (isTrash) {
+      filteredMails = filteredMails.filter((mail) => mail.isTrash)
     }
 
     return filteredMails

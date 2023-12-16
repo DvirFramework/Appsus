@@ -3,11 +3,13 @@ import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailFolder } from "../cmps/MailFolder.jsx"
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService } from "../services/mail.service.js"
+import { showSuccessMsg } from "../../../services/event-bus.service.js"
 const { useState, useEffect } = React
 const { Link, useSearchParams } = ReactRouterDOM
 
 export function MailIndex() {
   const [mails, setMails] = useState(null)
+  const [trashMails, setTrashMails] = useState([])
   const [searchParams, setSearchParams] = useSearchParams()
 
   const loggedInUser = mailService.getLoggedInUser()
@@ -53,6 +55,7 @@ export function MailIndex() {
   }
   function onMarkMailAsRead(mail) {
     mail.isRead = true
+
     onUpdateMail(mail)
   }
   function onMarkMailAsUnRead(mail) {
@@ -79,7 +82,12 @@ export function MailIndex() {
     <section className="mail-index main-mail-layout ">
       <MailAdd />
       <MailFilter onSetFilter={onSetFilter} filterBy={filterBy} />
-      <MailFolder onSetFilter={onSetFilter} filterBy={filterBy} mails={mails} />
+      <MailFolder
+        onSetFilter={onSetFilter}
+        filterBy={filterBy}
+        mails={mails}
+        trashMails={trashMails}
+      />
       <MailList
         mails={mails}
         onUpdateMail={onUpdateMail}

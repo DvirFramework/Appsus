@@ -4,6 +4,13 @@
   transition: background-color 0.5s;
 }
 
+.trashMail {
+  background-color: var(--trashMail-clr);
+}
+
+.mail-preview.trashMail:hover {
+  background-color: var(--onHoverTrashMail-clr);
+}
 .mail-preview:hover {
   background-color: var(--onHoverMail-clr);
 }

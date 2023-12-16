@@ -14,4 +14,6 @@
   --sendMail-btn-clr: #0b57d0;
   --sendMail-btn-clr-hover: rgb(49, 49, 190);
   --onHoverMail-clr: aliceBlue;
+  --trashMail-clr: rgb(250, 215, 215);
+  --onHoverTrashMail-clr: rgb(236, 175, 175);
 }
