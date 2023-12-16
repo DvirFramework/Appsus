@@ -92,7 +92,7 @@ export function MailAdd() {
             name="body"
             id="body"
             cols="30"
-            rows="10"
+            rows="6"
             onChange={handleChange}
           ></textarea>
 

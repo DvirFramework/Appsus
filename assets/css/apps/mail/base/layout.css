@@ -13,3 +13,60 @@
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
+
+@media (max-width: 380px) {
+  .main-mail-layout {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+  }
+  header {
+    width: 100%;
+  }
+  .mail-add .compose-btn {
+    width: 100px;
+  }
+  .mail-filter input {
+    width: 260px;
+  }
+  .mail-folder {
+    display: none;
+  }
+  .mail-preview-layout {
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+  .mail-preview .from-mail h1 {
+    display: none;
+  }
+  .mail-preview {
+    margin-bottom: 20px;
+  }
+  .mail-preview .mail-body .mail-txt {
+    font-size: 0.8em;
+  }
+
+  .mail-preview .mail-body {
+    display: flex;
+    flex-direction: column;
+  }
+  .mail-preview .date-mail {
+    justify-self: center;
+  }
+  .mail-preview .star-mail {
+    display: flex;
+    justify-content: center;
+  }
+  .mail-list {
+    padding: none;
+    list-style: none;
+    /* background-color: red; */
+    /* grid-row: 3; */
+    /* opacity: 80%; */
+  }
+}
